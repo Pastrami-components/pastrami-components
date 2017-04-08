@@ -1,6 +1,6 @@
 {
-  "name": "@pastrami/pastrami-components",
-  "version": "0.0.0",
+  "name": "@battr/battr-components",
+  "version": "0.0.0-alpha.0",
   "license": "MIT",
   "author": "Pastrami on Rye",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://B-3PO@github.com/Pastrami-components/pastrami-components.git"
+    "url": "git+https://B-3PO@github.com/Pastrami-components/battr-components.git"
   },
   "devDependencies": {},
   "dependencies": {
