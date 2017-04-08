@@ -1,0 +1,17 @@
+{
+  "name": "@pastrami/pastrami-components",
+  "version": "0.0.0",
+  "license": "MIT",
+  "author": "Pastrami on Rye",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://B-3PO@github.com/Pastrami-components/pastrami-components.git"
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "gsap": "^1.19.1"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "pastrami",
+  "main": "",
+  "authors": [
+    "Ben Rubin"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "gsap": "^1.19.1"
+  }
+}
