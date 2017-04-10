@@ -2,7 +2,8 @@
   "name": "@battr/battr-components",
   "version": "0.0.0-alpha.0",
   "license": "MIT",
-  "author": "Pastrami on Rye",
+  "author": "B-3PO",
+  "main": "src/index.js",
   "scripts": {
     "test": "gulp test"
   },
@@ -10,7 +11,10 @@
     "type": "git",
     "url": "git+https://B-3PO@github.com/Pastrami-components/battr-components.git"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@battr/battr-build": "0.0.1-alpha.6",
+    "@battr/battr-core": "0.0.0-alpha.5"
+  },
   "dependencies": {
     "gsap": "^1.19.1"
   }

@@ -1,0 +1,1 @@
+require('@battr/battr-build');
