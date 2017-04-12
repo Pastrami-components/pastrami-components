@@ -11,6 +11,7 @@
     <!-- inject:css -->
     <link rel="stylesheet" href="/style/main.css">
     <link rel="stylesheet" href="/style/variables.css">
+    <link rel="stylesheet" href="/expander/style/expander.css">
     <link rel="stylesheet" href="/button/style/button.css">
     <link rel="stylesheet" href="/style/themes/deep-purple.css">
     <link rel="stylesheet" href="/style/themes/indigo-pink-theme.css">
@@ -34,6 +35,42 @@
       <h4>Button</h4>
       <br-button class="br-primary">${name}</br-button>
     </section>
+
+    <section>
+      <h4>Expander</h4>
+      <br-expander style="width: 300px">
+
+        <br-expander-header>
+          <div class="br-title">Header</div>
+          <br-expander-arrow></br-expander-arrow>
+        </br-expander-header>
+
+        <br-expander-expanded>
+          <div class="br-content">
+            <p>Hello</p>
+            <p>Hello</p>
+            <p>Hello</p>
+            <p>Hello</p>
+          </div>
+        </br-expander-expanded>
+
+      </br-expander>
+    </section>
+
+    <section>
+      <h4>if</h4>
+      <div if="${showit}">
+        hello
+      </div>
+    </section>
+
+    <section>
+      <h4>For</h4>
+      <div for="item of list">
+        <br-button class="br-primary">${item.name}</br-button>
+      </div>
+    </section>
+
   </body>
 
 </html>
