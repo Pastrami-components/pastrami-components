@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <title>Material Components</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="/gsap/src/minified/plugins/CSSPlugin.min.js"></script>
+    <script src="/gsap/src/minified/easing/EasePack.min.js"></script>
+    <script src="/gsap/src/minified/TweenLite.min.js"></script>
+
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/style/main.css">
+    <link rel="stylesheet" href="/style/variables.css">
+    <link rel="stylesheet" href="/button/style/button.css">
+    <link rel="stylesheet" href="/style/themes/deep-purple.css">
+    <link rel="stylesheet" href="/style/themes/indigo-pink-theme.css">
+    <!-- endinject -->
+    <!-- inject:js -->
+    <script src="/template-strings/compile.js"></script>
+    <script src="/template-strings/index.js"></script>
+    <script src="/template-strings/resolve-to-string.js"></script>
+    <script src="/battrComponents.js"></script>
+    <!-- endinject -->
+    <script src="app.js"></script>
+  </head>
+
+  <body controller="AppController">
+    <section>
+      <h4>binding expression</h4>
+      ${'bound name: ' + name}
+    </section>
+
+    <section>
+      <h4>Button</h4>
+      <br-button class="br-primary">${name}</br-button>
+    </section>
+  </body>
+
+</html>

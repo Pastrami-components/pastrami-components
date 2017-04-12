@@ -1,8 +1,8 @@
 import { component } from '@battr/battr-core';
 
 component.define({
-  selector: 'mc-button, button[mc-button]',
-  template: '<button class="mc-button"><mc-transpose></mc-transpose></button>',
+  selector: 'br-button, button[br-button]',
+  template: '<button class="br-button"><transpose></transpose></button>',
   replace: true,
   transfer: true
 });

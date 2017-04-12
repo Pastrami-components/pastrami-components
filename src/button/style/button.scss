@@ -1,0 +1,47 @@
+@import '../../style/variables';
+@import 'button-variables';
+@import 'button-theme';
+
+.br-button {
+  box-sizing: border-box;
+  position: relative;
+
+  // browser defaults.
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  border: none;
+
+  // Make anchors render like buttons.
+  display: inline-block;
+  white-space: nowrap;
+  text-decoration: none;
+  vertical-align: baseline;
+
+  // font.
+  font-size: $br-global-font-size;
+  font-family: $br-global-font-family;
+  font-weight: 500;
+  color: currentColor;
+  text-align: center;
+
+  // Sizing.
+  margin: $br-button-margin;
+  min-width: $br-button-min-width;
+  line-height: $br-button-line-height;
+  padding: $br-button-padding;
+  border-radius: $br-button-border-radius;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+
+  &[disabled] {
+  	cursor: not-allowed;
+  }
+}

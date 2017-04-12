@@ -1,0 +1,74 @@
+@import '../../style/theme';
+
+@mixin br-button-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  .br-button, .br-button-raised {
+    &.br-button-focus {
+      @include _br-button-focus-color($theme);
+    }
+  }
+
+  .br-button {
+    @include _br-button-theme-color($theme, 'color');
+    background: transparent;
+
+    &:hover {
+      @include _br-button-focus-color($theme);
+    }
+  }
+
+  .br-button-raised {
+    @include _br-button-theme-color($theme, 'color', default-contrast);
+    @include _br-button-theme-color($theme, 'background-color');
+    background-color: br-color($background, raised-button);
+  }
+}
+
+
+@mixin _br-button-theme-color($theme, $property, $color: 'default') {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  &.br-primary {
+    #{$property}: br-color($primary, $color);
+  }
+  &.br-accent {
+    #{$property}: br-color($accent, $color);
+  }
+  &.br-warn {
+    #{$property}: br-color($warn, $color);
+  }
+
+  &.br-primary, &.br-accent, &.br-warn, &[disabled] {
+    &[disabled] {
+      $palette: if($property == 'color', $foreground, $background);
+      #{$property}: br-color($palette, disabled-button);
+    }
+  }
+}
+
+@mixin _br-button-focus-color($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+
+  &.br-primary {
+    background-color: br-color($primary, 0.12);
+  }
+
+  &.br-accent {
+    background-color: br-color($accent, 0.12);
+  }
+
+  &.br-warn {
+    background-color: br-color($warn, 0.12);
+  }
+}
