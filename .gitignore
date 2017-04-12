@@ -46,3 +46,5 @@ public/
 
 # environment config
 .env
+
+bower_components
