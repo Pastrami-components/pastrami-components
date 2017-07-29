@@ -2,6 +2,7 @@
   <head>
     <title>Material Components</title>
 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
     <link rel="stylesheet" href="style.css">
 
     <script src="/gsap/src/minified/plugins/CSSPlugin.min.js"></script>
@@ -9,12 +10,17 @@
     <script src="/gsap/src/minified/TweenLite.min.js"></script>
 
     <!-- inject:css -->
+    <link rel="stylesheet" href="/grid.css">
+    <link rel="stylesheet" href="/style/elevation.css">
     <link rel="stylesheet" href="/style/main.css">
+    <link rel="stylesheet" href="/style/typography.css">
     <link rel="stylesheet" href="/style/variables.css">
-    <link rel="stylesheet" href="/expander/style/expander.css">
     <link rel="stylesheet" href="/button/style/button.css">
+    <link rel="stylesheet" href="/expander/style/expander.css">
     <link rel="stylesheet" href="/style/themes/deep-purple.css">
     <link rel="stylesheet" href="/style/themes/indigo-pink-theme.css">
+    <link rel="stylesheet" href="/style/typography/build-typography.css">
+    <link rel="stylesheet" href="/style/typography/typography.css">
     <!-- endinject -->
     <!-- inject:js -->
     <script src="/template-strings/compile.js"></script>
@@ -26,7 +32,19 @@
   </head>
 
   <body controller="AppController">
-    <section>
+    <h4>Example App</h4>
+
+    <h6>Edit Item</h6>
+    <br-button>Load Data</br-button>
+    <br-button class="br-primary">Load Data</br-button>
+    <br-button class="br-accent">Load Data</br-button>
+    <br-button class="br-warn">Load Data</br-button>
+
+    <br-button class="br-button-raised">Load Data</br-button>
+    <br-button class="br-button-raised br-primary">Load Data</br-button>
+    <br-button class="br-button-raised br-accent">Load Data</br-button>
+    <br-button class="br-button-raised br-warn">Load Data</br-button>
+    <!-- <section>
       <h4>binding expression</h4>
       ${'bound name: ' + name}
     </section>
@@ -69,8 +87,7 @@
       <div for="item of list">
         <br-button class="br-primary">${item.name}</br-button>
       </div>
-    </section>
-
+    </section> -->
   </body>
 
 </html>

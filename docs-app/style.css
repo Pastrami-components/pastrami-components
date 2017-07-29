@@ -1,15 +1,68 @@
-section {
-  padding: 12px;
-  margin-bottom: 12px;
-  background: #EEE;
-  border-radius: 2px;
+:root{
+  --font-family: Roboto, 'Helvetica Neue', sans-serif;
+  --font-size: 10px;
+  --display-4-font-size-base: calc(11.20 * var(--font-size));
+  --display-3-font-size-base: calc(5.6 * var(--font-size));
+  --display-2-font-size-base: calc(4.5 * var(--font-size));
+  --display-1-font-size-base: calc(3.4 * var(--font-size));
+  --headline-font-size-base: calc(2.4 * var(--font-size));
+  --title-font-size-base: calc(2.0 * var(--font-size));
+  --subhead-font-size-base: calc(1.6 * var(--font-size));
+  --body-font-size-base: calc(1.4 * var(--font-size));
+  --caption-font-size-base: calc(1.2 * var(--font-size));
 }
 
-section:last-child {
-  margin-bottom: 0;
+body {
+  font-family: var(--font-family);
 }
 
-section h4 {
-  margin-top: 0px;
-  color: #666;
+h1,
+.md-display-4 {
+  font-size: var(--display-4-font-size-base);
+  font-weight: 300;
+  letter-spacing: -0.010em;
+  line-height: var(--display-4-font-size-base);
+}
+
+h2,
+.md-display-3 {
+  font-size: var(--display-3-font-size-base);
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  line-height: var(--display-3-font-size-base);
+}
+
+h3,
+.md-display-2 {
+  font-size: var(--display-2-font-size-base);
+  font-weight: 400;
+  line-height: calc(6.4 * var(--font-size));
+}
+
+h4,
+.md-display-1 {
+  font-size: var(--display-1-font-size-base);
+  font-weight: 400;
+  line-height: calc(4.0 * var(--font-size));
+}
+
+h5,
+.md-headline {
+  font-size: var(--headline-font-size-base);
+  font-weight: 400;
+  line-height: calc(3.2 * var(--font-size));
+}
+
+h6,
+.md-title {
+  font-size: var(--title-font-size-base);
+  font-weight: 500;
+  letter-spacing: 0.005em;
+}
+
+.md-subhead {
+  font-size: var(--subhead-font-size-base);
+  font-weight: 400;
+  letter-spacing: 0.010em;
+  line-height: calc(2.4 * var(--font-size));
 }

@@ -669,11 +669,41 @@ $br-dark-theme-background: (
   disabled-button-toggle: map_get($br-grey, 1000),
 );
 
+// // Foreground palette for light themes.
+// $br-light-theme-foreground: (
+//   base:            black,
+//   divider:         $black-12-opacity,
+//   dividers:        $black-12-opacity,
+//   disabled:        rgba(black, 0.38),
+//   disabled-button: rgba(black, 0.38),
+//   disabled-text:   rgba(black, 0.38),
+//   hint-text:       rgba(black, 0.38),
+//   secondary-text:  rgba(black, 0.54),
+//   icon:            rgba(black, 0.54),
+//   icons:           rgba(black, 0.54),
+//   text:            rgba(black, 0.87)
+// );
+//
+// // Foreground palette for dark themes.
+// $br-dark-theme-foreground: (
+//   base:            white,
+//   divider:         $white-12-opacity,
+//   dividers:        $white-12-opacity,
+//   disabled:        rgba(white, 0.3),
+//   disabled-button: rgba(white, 0.3),
+//   disabled-text:   rgba(white, 0.3),
+//   hint-text:       rgba(white, 0.3),
+//   secondary-text:  rgba(white, 0.7),
+//   icon:            white,
+//   icons:           white,
+//   text:            white
+// );
+
 // Foreground palette for light themes.
 $br-light-theme-foreground: (
   base:            black,
-  divider:         $black-12-opacity,
-  dividers:        $black-12-opacity,
+  divider:         rgba(black, 0.12),
+  dividers:        rgba(black, 0.12),
   disabled:        rgba(black, 0.38),
   disabled-button: rgba(black, 0.38),
   disabled-text:   rgba(black, 0.38),
@@ -687,8 +717,8 @@ $br-light-theme-foreground: (
 // Foreground palette for dark themes.
 $br-dark-theme-foreground: (
   base:            white,
-  divider:         $white-12-opacity,
-  dividers:        $white-12-opacity,
+  divider:         rgba(white, 0.12),
+  dividers:        rgba(white, 0.12),
   disabled:        rgba(white, 0.3),
   disabled-button: rgba(white, 0.3),
   disabled-text:   rgba(white, 0.3),

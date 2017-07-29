@@ -1,0 +1,12 @@
+@import './typography';
+@import '../../button/style/button-theme';
+
+
+// Includes all of the typographic styles.
+@mixin build-typography($config: null) {
+  @if $config == null {
+    $config: br-typography-config();
+  }
+
+  @include br-button-typography($config);
+}

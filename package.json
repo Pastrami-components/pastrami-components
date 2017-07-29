@@ -1,6 +1,6 @@
 {
   "name": "@battr/battr-components",
-  "version": "0.0.0-alpha.1",
+  "version": "0.0.0-alpha.2",
   "license": "MIT",
   "author": "B-3PO",
   "main": "src/index.js",
@@ -12,8 +12,9 @@
     "url": "git+https://B-3PO@github.com/battrjs/battr-components.git"
   },
   "devDependencies": {
-    "@battr/battr-build": "0.0.1-alpha.15",
-    "@battr/battr-core": "0.0.0-alpha.11"
+    "@battr/battr-build": "file:///Users/benrubin/Projects/battr/battr-build",
+    "@battr/battr-core": "file:///Users/benrubin/Projects/battr/battr-core",
+    "@battr/battr-core-components": "file:///Users/benrubin/Projects/battr/battr-core-components"
   },
   "dependencies": {
     "gsap": "^1.19.1"

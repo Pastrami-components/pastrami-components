@@ -1,0 +1,132 @@
+$br-font-family: Roboto, 'Helvetica Neue', sans-serif;
+$br-font-size: 10px;
+$br-display-4-font-size-base: calc(11.20 * $br-font-size);
+$br-display-3-font-size-base: calc(5.6 * $br-font-size);
+$br-display-2-font-size-base: calc(4.5 * $br-font-size);
+$br-display-1-font-size-base: calc(3.4 * $br-font-size);
+$br-headline-font-size-base: calc(2.4 * $br-font-size);
+$br-title-font-size-base: calc(2.0 * $br-font-size);
+$br-subhead-font-size-base: calc(1.6 * $br-font-size);
+$br-body-font-size-base: calc(1.4 * $br-font-size);
+$br-caption-font-size-base: calc(1.2 * $br-font-size);
+
+
+// Represents a typography level from the Material design spec.
+@function br-typography-level(
+  $font-size,
+  $line-height: $font-size,
+  $font-weight: 400,
+  $font-family: null) {
+
+  @return (
+    font-size: $font-size,
+    line-height: $line-height,
+    font-weight: $font-weight,
+    font-family: $font-family
+  );
+}
+
+// Represents a collection of typography levels.
+// Defaults come from https://material.io/guidelines/style/typography.html
+@function br-typography-config(
+  $font-family:   'Roboto, "Helvetica Neue", sans-serif',
+  $display-4:     br-typography-level(112px, 112px, 300),
+  $display-3:     br-typography-level(56px, 56px, 400),
+  $display-2:     br-typography-level(45px, 48px, 400),
+  $display-1:     br-typography-level(34px, 40px, 400),
+  $headline:      br-typography-level(24px, 32px, 400),
+  $title:         br-typography-level(20px, 32px, 500),
+  $subheading-2:  br-typography-level(16px, 28px, 400),
+  $subheading-1:  br-typography-level(15px, 24px, 400),
+  $body-2:        br-typography-level(14px, 24px, 500),
+  $body-1:        br-typography-level(14px, 20px, 400),
+  $caption:       br-typography-level(12px, 20px, 400),
+  $button:        br-typography-level(14px, 14px, 500),
+  // Line-height must be unit-less fraction of the font-size.
+  $input:         br-typography-level(16px, 1.125, 400)
+) {
+
+  // Declare an initial map with all of the levels.
+  $config: (
+    display-4:      $display-4,
+    display-3:      $display-3,
+    display-2:      $display-2,
+    display-1:      $display-1,
+    headline:       $headline,
+    title:          $title,
+    subheading-2:   $subheading-2,
+    subheading-1:   $subheading-1,
+    body-2:         $body-2,
+    body-1:         $body-1,
+    caption:        $caption,
+    button:         $button,
+    input:          $input,
+  );
+
+  // Loop through the levels and set the `font-family` of the ones that don't have one to the base.
+  // Note that SASS can't modify maps in place, which means that we need to merge and re-assign.
+  @each $key, $level in $config {
+    @if map-get($level, font-family) == null {
+      $new-level: map-merge($level, (font-family: $font-family));
+      $config: map-merge($config, ($key: $new-level));
+    }
+  }
+
+  // Add the base font family to the config.
+  @return map-merge($config, (font-family: $font-family));
+}
+
+body {
+  font-family: $br-font-family;
+}
+
+h1,
+.md-display-4 {
+  font-size: $br-display-4-font-size-base;
+  font-weight: 300;
+  letter-spacing: -0.010em;
+  line-height: $br-display-4-font-size-base;
+}
+
+h2,
+.md-display-3 {
+  font-size: $br-display-3-font-size-base;
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  line-height: $br-display-3-font-size-base;
+}
+
+h3,
+.md-display-2 {
+  font-size: $br-display-2-font-size-base;
+  font-weight: 400;
+  line-height: calc(6.4 * $br-font-size);
+}
+
+h4,
+.md-display-1 {
+  font-size: $br-display-1-font-size-base;
+  font-weight: 400;
+  line-height: calc(4.0 * $br-font-size);
+}
+
+h5,
+.md-headline {
+  font-size: $br-headline-font-size-base;
+  font-weight: 400;
+  line-height: calc(3.2 * $br-font-size);
+}
+
+h6,
+.md-title {
+  font-size: $br-title-font-size-base;
+  font-weight: 500;
+  letter-spacing: 0.005em;
+}
+
+.md-subhead {
+  font-size: $br-subhead-font-size-base;
+  font-weight: 400;
+  letter-spacing: 0.010em;
+  line-height: calc(2.4 * $br-font-size);
+}
