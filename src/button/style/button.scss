@@ -1,12 +1,13 @@
 @import '../../style/typography/typography';
 @import '../../style/elevation';
 
-$br-button-font-size: $br-font-size;
+$br-button-font-size: calc(1.4em * $br-font-size);
 $br-button-padding: 0 16px;
 $br-button-min-width: 88px;
 $br-button-margin: 0;
 $br-button-line-height: 36px;
 $br-button-border-radius: 2px;
+$br-button-focus-transition: opacity 200ms $swift-ease-in-out-timing-function;
 
 .br-button {
   box-sizing: border-box;
@@ -25,9 +26,8 @@ $br-button-border-radius: 2px;
   vertical-align: baseline;
 
   // font.
-  // font-size: $br-button-font-size;
-  // font-family: $br-font-family;
-  // font-weight: 500;
+  font-size: $br-button-font-size;
+  font-weight: 500;
   color: currentColor;
   text-align: center;
 
@@ -38,6 +38,17 @@ $br-button-border-radius: 2px;
   padding: $br-button-padding;
   border-radius: $br-button-border-radius;
 
+  .br-button-focus-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    pointer-events: none;
+    transition: $br-button-focus-transition;
+    opacity: 0;
+  }
+
   &:focus {
     outline: none;
   }
@@ -45,6 +56,10 @@ $br-button-border-radius: 2px;
   &:hover,
   &:focus {
     text-decoration: none;
+
+    .br-button-focus-overlay {
+      opacity: 1;
+    }
   }
 
   &[disabled] {
@@ -70,25 +85,3 @@ $br-button-border-radius: 2px;
     box-shadow: none;
   }
 }
-
-// Applies styles to buttons with backgrounds: raised, fab, and mini-fab
-// %br-button-raised {
-//   @extend %br-button-base;
-//
-//   @include mat-elevation(2);
-//
-//   // Force hardware acceleration.
-//   transform: translate3d(0, 0, 0);
-//
-//   // Animation.
-//   transition: background $swift-ease-out-duration $swift-ease-out-timing-function,
-//               mat-elevation-transition-property-value();
-//
-//   &:not([disabled]):active {
-//     @include mat-elevation(8);
-//   }
-//
-//   &[disabled] {
-//     box-shadow: none;
-//   }
-// }
