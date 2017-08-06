@@ -12,15 +12,19 @@
     background: transparent;
     @include _br-button-focus-color($theme);
     @include _br-button-theme-color($theme, 'color');
+    @include _br-button-ripple-color($theme, default, 0.1);
   }
 
-  .br-button-raised {
+  .br-raised-button, .br-fab, .br-mini-fab {
     // Default properties when not using any [color] value.
     color: br-color($foreground, text);
     background-color: br-color($background, raised-button);
 
     @include _br-button-theme-color($theme, 'color', default-contrast);
     @include _br-button-theme-color($theme, 'background-color');
+
+    // Add ripple effect with contrast color to buttons that don't have a focus overlay.
+    @include _br-button-ripple-color($theme, default-contrast);
   }
 
   .br-button-focus-overlay {
@@ -84,5 +88,23 @@
       size: br-font-size($config, button);
       weight: br-font-weight($config, button);
     }
+  }
+}
+
+@mixin _br-button-ripple-color($theme, $hue, $opacity: 0.2) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+
+  &.br-primary .br-ripple-element {
+    background-color: br-color($primary, $hue, $opacity);
+  }
+
+  &.br-accent .br-ripple-element {
+    background-color: br-color($accent, $hue, $opacity);
+  }
+
+  &.br-warn .br-ripple-element {
+    background-color: br-color($warn, $hue, $opacity);
   }
 }

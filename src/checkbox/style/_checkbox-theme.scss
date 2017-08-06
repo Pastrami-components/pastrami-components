@@ -1,0 +1,97 @@
+@import '../../style/typography/typography-utils';
+@import '../../style/theme';
+
+
+@mixin br-checkbox-theme($theme) {
+  $is-dark-theme: map-get($theme, is-dark);
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+
+
+  // The color of the checkbox's checkmark / mixedmark.
+  $checkbox-mark-color: br-color($background, background);
+
+  // NOTE(traviskaufman): While the spec calls for translucent blacks/whites for disabled colors,
+  // this does not work well with elements layered on top of one another. To get around this we
+  // blend the colors together based on the base color and the theme background.
+  $white-30pct-opacity-on-dark: #686868;
+  $black-26pct-opacity-on-light: #b0b0b0;
+  $disabled-color: if($is-dark-theme, $white-30pct-opacity-on-dark, $black-26pct-opacity-on-light);
+
+  .br-checkbox-frame {
+    border-color: br-color(map-get($theme, foreground), secondary-text);
+  }
+
+  .br-checkbox-checkmark {
+    fill: $checkbox-mark-color;
+  }
+
+  .br-checkbox-checkmark-path {
+    // !important is needed here because a stroke must be set as an attribute on the SVG in order
+    // for line animation to work properly.
+    stroke: $checkbox-mark-color !important;
+  }
+
+  .br-checkbox-mixedmark {
+    background-color: $checkbox-mark-color;
+  }
+
+  .br-checkbox-indeterminate, .br-checkbox-checked {
+    &.br-primary .br-checkbox-background {
+      background-color: br-color($primary);
+    }
+
+    &.br-accent .br-checkbox-background {
+      background-color: br-color($accent);
+    }
+
+    &.br-warn .br-checkbox-background {
+      background-color: br-color($warn);
+    }
+  }
+
+  .br-checkbox-disabled {
+    &.br-checkbox-checked, &.br-checkbox-indeterminate {
+      .br-checkbox-background {
+        background-color: $disabled-color;
+      }
+    }
+
+    &:not(.br-checkbox-checked) {
+      .br-checkbox-frame {
+        border-color: $disabled-color;
+      }
+    }
+
+    .br-checkbox-label {
+      color: $disabled-color;
+    }
+  }
+
+  .br-checkbox:not(.br-checkbox-disabled) {
+    &.br-primary .br-checkbox-ripple .br-ripple-element {
+      background-color: br-color($primary, 0.26);
+    }
+
+    &.br-accent .br-checkbox-ripple .br-ripple-element {
+      background-color: br-color($accent, 0.26);
+    }
+
+    &.br-warn .br-checkbox-ripple .br-ripple-element {
+      background-color: br-color($warn, 0.26);
+    }
+  }
+}
+
+@mixin br-checkbox-typography($config) {
+  .br-checkbox {
+    font-family: br-font-family($config);
+  }
+
+  // TODO(kara): Remove this style when fixing vertical baseline
+  .br-checkbox-layout .br-checkbox-label {
+    line-height: br-line-height($config, body-2);
+  }
+}

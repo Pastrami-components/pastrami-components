@@ -1,0 +1,7 @@
+@import 'typography/build-typography';
+@import 'a11y';
+
+@mixin br-core() {
+  @include build-typography();
+  @include cdk-a11y();
+}

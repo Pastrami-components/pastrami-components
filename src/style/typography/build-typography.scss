@@ -1,5 +1,6 @@
 @import './typography';
 @import '../../button/style/button-theme';
+@import '../../checkbox/style/checkbox-theme';
 
 
 // Includes all of the typographic styles.
@@ -8,5 +9,7 @@
     $config: br-typography-config();
   }
 
+  @include br-base-typography($config);
   @include br-button-typography($config);
+  @include br-checkbox-typography($config);
 }

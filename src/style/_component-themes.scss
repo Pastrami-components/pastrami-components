@@ -1,5 +1,10 @@
 @import '../button/style/button-theme';
+@import '../ripple/ripple';
+@import '../checkbox/style/checkbox-theme';
 
 @mixin material-theme($theme) {
   @include br-button-theme($theme);
+  @include br-ripple-theme($theme);
+  @include br-ripple();
+  @include br-checkbox-theme($theme);
 };

@@ -1,15 +1,4 @@
-$br-font-family: Roboto, 'Helvetica Neue', sans-serif;
-$br-font-size: 10px;
-$br-display-4-font-size-base: calc(11.20 * $br-font-size);
-$br-display-3-font-size-base: calc(5.6 * $br-font-size);
-$br-display-2-font-size-base: calc(4.5 * $br-font-size);
-$br-display-1-font-size-base: calc(3.4 * $br-font-size);
-$br-headline-font-size-base: calc(2.4 * $br-font-size);
-$br-title-font-size-base: calc(2.0 * $br-font-size);
-$br-subhead-font-size-base: calc(1.6 * $br-font-size);
-$br-body-font-size-base: calc(1.4 * $br-font-size);
-$br-caption-font-size-base: calc(1.2 * $br-font-size);
-
+@import 'typography-utils';
 
 // Represents a typography level from the Material design spec.
 @function br-typography-level(
@@ -27,7 +16,7 @@ $br-caption-font-size-base: calc(1.2 * $br-font-size);
 }
 
 // Represents a collection of typography levels.
-// Defaults come from https://material.io/guidelines/style/typography.html
+// Defaults come from https://brerial.io/guidelines/style/typography.html
 @function br-typography-config(
   $font-family:   'Roboto, "Helvetica Neue", sans-serif',
   $display-4:     br-typography-level(112px, 112px, 300),
@@ -76,57 +65,88 @@ $br-caption-font-size-base: calc(1.2 * $br-font-size);
   @return map-merge($config, (font-family: $font-family));
 }
 
-body {
-  font-family: $br-font-family;
-}
+@mixin br-base-typography($config, $selector: '.br-typography') {
+  .br-h1, .br-headline, #{$selector} h1 {
+    @include br-typography-level-to-styles($config, headline);
+    margin: 0 0 16px;
+  }
 
-h1,
-.md-display-4 {
-  font-size: $br-display-4-font-size-base;
-  font-weight: 300;
-  letter-spacing: -0.010em;
-  line-height: $br-display-4-font-size-base;
-}
+  .br-h2, .br-title, #{$selector} h2 {
+    @include br-typography-level-to-styles($config, title);
+    margin: 0 0 16px;
+  }
 
-h2,
-.md-display-3 {
-  font-size: $br-display-3-font-size-base;
-  font-weight: 400;
-  letter-spacing: -0.005em;
-  line-height: $br-display-3-font-size-base;
-}
+  .br-h3, .br-subheading-2, #{$selector} h3 {
+    @include br-typography-level-to-styles($config, subheading-2);
+    margin: 0 0 16px;
+  }
 
-h3,
-.md-display-2 {
-  font-size: $br-display-2-font-size-base;
-  font-weight: 400;
-  line-height: calc(6.4 * $br-font-size);
-}
+  .br-h4, .br-subheading-1, #{$selector} h4 {
+    @include br-typography-level-to-styles($config, subheading-1);
+    margin: 0 0 16px;
+  }
 
-h4,
-.md-display-1 {
-  font-size: $br-display-1-font-size-base;
-  font-weight: 400;
-  line-height: calc(4.0 * $br-font-size);
-}
+  // Note: the spec doesn't have anything that would correspond to h5 and h6, but we add these for
+  // consistency. The font sizes come from the Chrome user agent styles which have h5 at 0.83em
+  // and h6 at 0.67em.
+  .br-h5, #{$selector} h5 {
+    font-size: br-font-size($config, body-1) * 0.83;
+    font-weight: br-font-weight($config, body-1);
+    font-family: br-font-family($config, body-1);
+    line-height: br-line-height($config, body-1);
+    margin: 0 0 12px;
+  }
 
-h5,
-.md-headline {
-  font-size: $br-headline-font-size-base;
-  font-weight: 400;
-  line-height: calc(3.2 * $br-font-size);
-}
+  .br-h6, #{$selector} h6 {
+    font-size: br-font-size($config, body-1) * 0.67;
+    font-weight: br-font-weight($config, body-1);
+    font-family: br-font-family($config, body-1);
+    line-height: br-line-height($config, body-1);
+    margin: 0 0 12px;
+  }
 
-h6,
-.md-title {
-  font-size: $br-title-font-size-base;
-  font-weight: 500;
-  letter-spacing: 0.005em;
-}
+  body {
+    font-family: br-font-family($config, body-1);
+  }
 
-.md-subhead {
-  font-size: $br-subhead-font-size-base;
-  font-weight: 400;
-  letter-spacing: 0.010em;
-  line-height: calc(2.4 * $br-font-size);
+  .br-body-strong, .br-body-2 {
+    @include br-typography-level-to-styles($config, body-2);
+  }
+
+  .br-body, .br-body-1, #{$selector} {
+    @include br-typography-level-to-styles($config, body-1);
+
+    p {
+      margin: 0 0 12px;
+    }
+  }
+
+  .br-small, .br-caption {
+    @include br-typography-level-to-styles($config, caption);
+  }
+
+  // Note: The spec doesn't mention letter spacing. The value comes from
+  // eyeballing it until it looked exactly like the spec examples.
+  .br-display-4, #{$selector} .br-display-4 {
+    @include br-typography-level-to-styles($config, display-4);
+    margin: 0 0 56px;
+    letter-spacing: -0.05em;
+  }
+
+  .br-display-3, #{$selector} .br-display-3 {
+    @include br-typography-level-to-styles($config, display-3);
+    margin: 0 0 64px;
+    letter-spacing: -0.02em;
+  }
+
+  .br-display-2, #{$selector} .br-display-2 {
+    @include br-typography-level-to-styles($config, display-2);
+    margin: 0 0 64px;
+    letter-spacing: -0.005em;
+  }
+
+  .br-display-1, #{$selector} .br-display-1 {
+    @include br-typography-level-to-styles($config, display-1);
+    margin: 0 0 64px;
+  }
 }

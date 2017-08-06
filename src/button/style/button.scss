@@ -1,13 +1,46 @@
 @import '../../style/typography/typography';
 @import '../../style/elevation';
 
-$br-button-font-size: calc(1.4em * $br-font-size);
-$br-button-padding: 0 16px;
-$br-button-min-width: 88px;
-$br-button-margin: 0;
-$br-button-line-height: 36px;
-$br-button-border-radius: 2px;
-$br-button-focus-transition: opacity 200ms $swift-ease-in-out-timing-function;
+$br-button-font-size: calc(1.4em * $br-font-size) !default;
+$br-button-padding: 0 16px !default;
+$br-button-min-width: 88px !default;
+$br-button-margin: 0 !default;
+$br-button-line-height: 36px !default;
+$br-button-border-radius: 2px !default;
+$br-button-focus-transition: opacity 200ms $swift-ease-in-out-timing-function !default;
+
+// Fab standards
+$br-fab-border-radius: 50% !default;
+$br-fab-size: 56px !default;
+$br-fab-padding: 16px !default;
+$br-mini-fab-size: 40px !default;
+$br-mini-fab-padding: 8px !default;
+$br-icon-button-line-height: 24px !default;
+
+// Applies styles to fab and mini-fab button types only
+@mixin br-fab($size, $padding) {
+  @include br-elevation(6);
+
+  // Reset the min-width from the button base.
+  min-width: 0;
+
+  border-radius: $br-fab-border-radius;
+  width: $size;
+  height: $size;
+  padding: 0;
+
+  flex-shrink: 0;
+
+  &:not([disabled]):active {
+    @include br-elevation(12);
+  }
+
+  .br-button-wrapper {
+    padding: $padding 0;
+    display: inline-block;
+    line-height: $br-icon-button-line-height;
+  }
+}
 
 .br-button {
   box-sizing: border-box;
@@ -51,10 +84,10 @@ $br-button-focus-transition: opacity 200ms $swift-ease-in-out-timing-function;
 
   &:focus {
     outline: none;
+    text-decoration: none;
   }
 
-  &:hover,
-  &:focus {
+  &:hover {
     text-decoration: none;
 
     .br-button-focus-overlay {
@@ -65,15 +98,30 @@ $br-button-focus-transition: opacity 200ms $swift-ease-in-out-timing-function;
   &[disabled] {
   	cursor: not-allowed;
   }
+
+  .br-button-ripple,
+  .br-button-focus-overlay {
+    border-radius: inherit;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    // Disable pointer events for the ripple container and focus overlay because the container
+    // will overlay the user content and we don't want to disable mouse events on the user content.
+    // Pointer events can be safely disabled because the ripple trigger element is the host element.
+    pointer-events: none;
+  }
 }
 
-.br-button-raised {
+.br-raised-button {
   @include br-elevation(2);
 
   // Force hardware acceleration.
   transform: translate3d(0, 0, 0);
 
-  // Animation.
+  // Anibrion.
   transition: background $swift-ease-out-duration $swift-ease-out-timing-function,
               br-elevation-transition-property-value();
 
@@ -84,4 +132,12 @@ $br-button-focus-transition: opacity 200ms $swift-ease-in-out-timing-function;
   &[disabled] {
     box-shadow: none;
   }
+}
+
+.br-fab {
+  @include br-fab($br-fab-size, $br-fab-padding);
+}
+
+.br-mini-fab {
+  @include br-fab($br-mini-fab-size, $br-mini-fab-padding);
 }

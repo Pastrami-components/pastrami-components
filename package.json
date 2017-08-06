@@ -5,7 +5,9 @@
   "author": "B-3PO",
   "main": "src/index.js",
   "scripts": {
-    "test": "gulp test"
+    "start": "gulp",
+    "test": "gulp test",
+    "reload": "rm -rf node_modules/@battr && npm install && gulp"
   },
   "repository": {
     "type": "git",

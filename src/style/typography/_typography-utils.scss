@@ -1,10 +1,16 @@
-@import './typography';
-
-
-
 // Utility for fetching a nested value from a typography config.
-@function _mat-get-type-value($config, $level, $name) {
+@function _br-get-type-value($config, $level, $name) {
   @return map-get(map-get($config, $level), $name);
+}
+
+// Gets the font size for a level inside a typography config.
+@function br-font-size($config, $level) {
+  @return _br-get-type-value($config, $level, font-size);
+}
+
+// Gets the font weight for a level inside a typography config.
+@function br-font-weight($config, $level) {
+  @return _br-get-type-value($config, $level, font-weight);
 }
 
 // Gets the font-family from a typography config and removes the quotes around it.
@@ -16,4 +22,22 @@
   }
 
   @return unquote($font-family);
+}
+
+// Gets the line height for a level inside a typography config.
+@function br-line-height($config, $level) {
+  @return _br-get-type-value($config, $level, line-height);
+}
+
+// Converts a typography level into CSS styles.
+@mixin br-typography-level-to-styles($config, $level) {
+  $font-size: br-font-size($config, $level);
+  $font-weight: br-font-weight($config, $level);
+  $line-height: br-line-height($config, $level);
+  $font-family: br-font-family($config, $level);
+
+  // Use the shorthand `font` to represent a typography level, because it's the shortest. Notes that
+  // we need to use interpolation for `font-size/line-height` in order to prevent SASS from dividing
+  // the two values.
+  font: $font-weight #{$font-size}/#{$line-height} $font-family;
 }

@@ -1,5 +1,3 @@
-@import '../../../node_modules/@battr/battr-core/src/style/variables';
-
 .br-expander {
   display: block;
   outline: none;
@@ -36,7 +34,7 @@
     .br-title {
       // font
       font-size: rem(1.6);
-      font-family: $br-global-font-family;
+      font-family: 16px;
       font-weight: 500;
       color: currentColor;
 
