@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var gulpClean= require('gulp-clean');
 require('@battr/battr-build/lib/default-config').names = {
   file: 'battr-components',
   module: 'battrComponents',
@@ -13,4 +14,8 @@ paths.styles.all = [
 require('@battr/battr-build');
 
 
-gulp.task('default', ['start-debug'])
+gulp.task('default', ['clean', 'start-debug'])
+gulp.task('clean', function () {
+  return gulp.src('dev/', {read: false})
+        .pipe(gulpClean());
+});

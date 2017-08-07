@@ -45,21 +45,24 @@ component.define({
 });
 
 function compile(element) {
+  // add default theme color if none exist
   if (!element.classList.contains('br-primary') && !element.classList.contains('br-accent') && !element.classList.contains('br-warn')) {
     element.classList.add('br-accent');
   }
 
+  // set default value
   element.value = false;
   element.setAttribute('value', false);
 }
 
-function Controller(model, element, observeAttr, getAttrBinding) {
-  var disabled = false; // TODO use attrObserver
+function Controller(element, observeAttr) {
+  var disabled = false;
   var indeterminate = false; // TODO figure out how to implament this. This is also reffered to as `mixed` mode
-  var checked = util.parseDataType(element.getAttribute('value'), 'boolean'); // TODO get this value from the model
+  var checked;
   var oldState = TransitionCheckState.Unchecked;
   var currentAnimationClass = '';
 
+  observeAttr('disabled', value => { disabled = value; });
   observeAttr('value', value => {
     checked = util.parseDataType(value, 'boolean');
     setStyle();
@@ -78,20 +81,20 @@ function Controller(model, element, observeAttr, getAttrBinding) {
     element.setAttribute('value', checked);
   });
 
-  function setStyle() {
-    transitionCheckState(checked ? TransitionCheckState.Checked : TransitionCheckState.Unchecked);
-    setCheckedStyle();
-  }
-
   function handleInterminate() {
-    // When user manually click on the checkbox, `indeterminate` is set to false.
     if (indeterminate) {
       indeterminate = false;
       // indeterminateChange.emit(this._indeterminate);
     }
   }
 
-  function setCheckedStyle() {
+
+
+  // --- style and animation ---
+
+  function setStyle() {
+    transitionCheckState(checked ? TransitionCheckState.Checked : TransitionCheckState.Unchecked);
+
     if (checked) {
       element.classList.add('br-checkbox-checked');
     } else {
