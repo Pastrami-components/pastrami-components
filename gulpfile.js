@@ -14,7 +14,7 @@ paths.styles.all = [
 require('@battr/battr-build');
 
 
-gulp.task('default', ['clean', 'start-debug'])
+gulp.task('default', ['clean', 'start-debug']);
 gulp.task('clean', function () {
   return gulp.src('dev/', {read: false})
         .pipe(gulpClean());

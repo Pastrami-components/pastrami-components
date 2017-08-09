@@ -62,7 +62,7 @@ function Controller(element, observeAttr) {
   var oldState = TransitionCheckState.Unchecked;
   var currentAnimationClass = '';
 
-  observeAttr('disabled', value => { disabled = value; });
+  observeAttr('disabled', value => { disabled = util.parseDataType(value, 'boolean'); });
   observeAttr('value', value => {
     checked = util.parseDataType(value, 'boolean');
     setStyle();
