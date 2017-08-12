@@ -1,0 +1,28 @@
+.navigation {
+  max-width: 136px;
+  background: #eee;
+  border-right: 1px solid #ddd;
+  height: 100%;
+  overflow: scroll;
+}
+.navigation .br-button {
+  padding: 0;
+  text-align: left;
+  padding-left: 24px;
+  padding-bottom: 12px;
+}
+
+.navigation h4 {
+  text-align: left;
+  padding-left: 24px;
+}
+
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 136px;
+  right: 0;
+  height: 54px;
+  background: #eee;
+  border-bottom: 1px solid #ddd;
+}

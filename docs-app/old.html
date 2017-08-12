@@ -1,0 +1,96 @@
+<body controller="AppController">
+  <h2>Buttons</h2>
+
+  <h3>Regular</h3>
+  <!-- button with component added via attribute  -->
+  <button br-button>Load Data</button>
+  <!-- br-button component -->
+  <br-button class="br-primary">${'hello' + ' world'}</br-button>
+  <!-- br-button component -->
+  <br-button class="br-accent">Load Data</br-button>
+  <!-- button with just the styles of a raised button. No component created and not the same as above 3. (notice no ripple or hover)  -->
+  <button class="br-button br-warn">Load Data</button>
+
+  <h3>Raised</h3>
+  <!-- button with component added via attribute  -->
+  <button br-raised-button>Load Data</button>
+  <!-- br-button component with raised style. Same end result as above  -->
+  <br-button class="br-raised-button br-primary">Load Data</br-button>
+  <!-- br-raised-button component. Same end result as above  -->
+  <br-raised-button class="br-accent">Load Data</br-raised-button>
+  <!-- button with just the styles of a raised button. No component created and not the same as above 3. (notice no ripple)  -->
+  <button class="br-button br-raised-button br-warn">Load Data</button>
+
+  <h3>FAB</h3>
+  <!-- button with component added via attribute  -->
+  <button br-fab>Hi</button>
+  <!-- br-button component with br-fab style. Same end result as above  -->
+  <br-button br-fab class="br-primary">Hi</br-button>
+  <!-- br-fab component. Same end result as above  -->
+  <br-fab class="br-accent">Hi</br-fab>
+  <!-- button with just the styles of a raised button. No component created and not the same as above 3. (notice no ripple)  -->
+  <button class="br-button br-fab br-warn">Hi</button>
+
+  <h3>Mini FAB</h3>
+  <!-- button with component added via attribute  -->
+  <button br-mini-fab>Hi</button>
+  <!-- br-button component with br-mini-fab style. Same end result as above  -->
+  <br-button br-mini-fab class="br-primary">Hi</br-button>
+  <!-- br-mini-fab component. Same end result as above  -->
+  <br-mini-fab class="br-accent">Hi</br-mini-fab>
+  <!-- button with just the styles of a raised button. No component created and not the same as above 3. (notice no ripple)  -->
+  <button class="br-button br-mini-fab br-warn">Hi</button>
+
+
+  <h2>checkboxes</h2>
+
+  <h3>Regular</h3>
+  <!-- button with component added via attribute  -->
+  <div>${checkboxValue}</div>
+  <br-checkbox [value]="checkboxValue">Check me out</br-checkbox>
+
+  <!-- <section>
+    <h4>binding expression</h4>
+    ${'bound name: ' + name}
+  </section>
+
+  <section>
+    <h4>Button</h4>
+    <br-button class="br-primary">${name}</br-button>
+  </section>
+
+  <section>
+    <h4>Expander</h4>
+    <br-expander style="width: 300px">
+
+      <br-expander-header>
+        <div class="br-title">Header</div>
+        <br-expander-arrow></br-expander-arrow>
+      </br-expander-header>
+
+      <br-expander-expanded>
+        <div class="br-content">
+          <p>Hello</p>
+          <p>Hello</p>
+          <p>Hello</p>
+          <p>Hello</p>
+        </div>
+      </br-expander-expanded>
+
+    </br-expander>
+  </section>
+
+  <section>
+    <h4>if</h4>
+    <div if="${showit}">
+      hello
+    </div>
+  </section>
+
+  <section>
+    <h4>For</h4>
+    <div for="item of list">
+      <br-button class="br-primary">${item.name}</br-button>
+    </div>
+  </section> -->
+</body>

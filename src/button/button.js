@@ -12,6 +12,7 @@ component.define({
       <div class="br-button-ripple br-ripple"></div>
       <div class="br-button-focus-overlay"></div>
     </button>`,
+  model: false,
   replace: true,
   transfer: true,
   compile: compile,
