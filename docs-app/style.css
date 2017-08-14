@@ -1,5 +1,6 @@
 .navigation {
   max-width: 136px;
+  width: 136px;
   background: #eee;
   border-right: 1px solid #ddd;
   height: 100%;
@@ -9,7 +10,7 @@
   padding: 0;
   text-align: left;
   padding-left: 24px;
-  padding-bottom: 12px;
+  margin-bottom: 12px;
 }
 
 .navigation h4 {
@@ -25,4 +26,8 @@
   height: 54px;
   background: #eee;
   border-bottom: 1px solid #ddd;
+}
+
+.view {
+  margin-top: 56px;
 }

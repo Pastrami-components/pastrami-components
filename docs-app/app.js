@@ -3,6 +3,9 @@ document.addEventListener("DOMContentLoaded", battrComponents.init);
 battrComponents.controller('AppController', function (model, router) {
   router
     .add('/', {})
+    .add('/button', {
+      template: 'button'
+    })
     .notFound(() => router.navigate('/'))
     .resolve();
 
@@ -13,9 +16,10 @@ battrComponents.controller('AppController', function (model, router) {
     { identifer: 'expander', name: 'Expander', url: '/expander' }
   ];
 
-  this.navigate = (title) => {
-    console.log(title)
-    model.pageTitle = model.links.filter(item => item.identifer === title)[0].name;
+  model.navigate = function (title) {
+    var linkData = model.links.filter(item => item.identifer === title)[0];
+    model.pageTitle = linkData.name;
+    router.navigate(linkData.url);
   };
 
   // model.checkboxValue = true;

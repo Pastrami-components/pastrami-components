@@ -11,13 +11,14 @@
     <script src="/gsap/src/minified/TweenLite.min.js"></script>
 
     <!-- inject:css -->
-    <link rel="stylesheet" href="/grid.css">
+    <link rel="stylesheet" href="/router.css">
     <link rel="stylesheet" href="/ripple/ripple.css">
     <link rel="stylesheet" href="/style/elevation.css">
     <link rel="stylesheet" href="/style/main.css">
-    <link rel="stylesheet" href="/button/style/button.css">
     <link rel="stylesheet" href="/checkbox/style/checkbox.css">
+    <link rel="stylesheet" href="/button/style/button.css">
     <link rel="stylesheet" href="/expander/style/expander.css">
+    <link rel="stylesheet" href="/style/layout/flexbox.css">
     <link rel="stylesheet" href="/style/themes/deep-purple.css">
     <link rel="stylesheet" href="/style/themes/indigo-pink-theme.css">
     <link rel="stylesheet" href="/style/typography/build-typography.css">
@@ -32,19 +33,18 @@
     <script src="app.js"></script>
   </head>
 
-  <body controller="AppController">
-    <div class="navigation container-column" role="navigation">
+  <body controller="AppController" class="layout-row layout-fill">
+    <div class="navigation layout-column" role="navigation">
       <h4 class="start-center">Navigation</h4>
       <br-button class="br-primary" click="${navigate('button')}">${links[0].name}</br-button>
       <br-button class="br-primary" click="${navigate('checkbox')}">${links[1].name}</br-button>
       <br-button class="br-primary" click="${navigate('expander')}">${links[2].name}</br-button>
-
-      <!-- <br-button class="br-primary">${links[0].name}</br-button>
-      <br-button class="br-primary">${links[1].name}</br-button>
-      <br-button class="br-primary">${links[2].name}</br-button> -->
     </div>
 
-    <div class="top-bar">${pageTitle}</div>
+    <div class="layout-column flex">
+      <div class="top-bar">${pageTitle}</div>
+      <view class="layout-column flex"></view>
+    </div>
   </body>
 
 </html>
